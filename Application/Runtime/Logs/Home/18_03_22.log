@@ -1,0 +1,5 @@
+[ 2018-03-22T18:50:02+08:00 ] ::1 /tp3/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011213s ]
+
