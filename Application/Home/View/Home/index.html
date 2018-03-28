@@ -14,7 +14,8 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <?php
-		$actUrl="\"".U('message/apply',"")."\""; //ThinkPHP内置的U方法，用于URL的动态生成
+		$actUrl="\"".U('message/high_apply',"")."\""; //ThinkPHP内置的U方法，用于URL的动态生成
+		$actUrl2="\"".U('train/outpack',"")."\"";
 	?>
 </head>
 <body>
@@ -34,7 +35,7 @@
 
                         <div class="form-group">
                             <if condition="$userinfo['level'] egt 7">
-                                <form method="POST" action=<?php echo $actUrl?>>
+                                <form class="form-horizontal" method="POST" action=<?php echo $actUrl?>>
                                     <input type="hidden" name="check" value="high" />
                                     <input type="hidden" name="name" value={$userinfo['name']}>
                                     <input type="hidden" name="email" value={$userinfo['email']}>
@@ -51,8 +52,20 @@
                                 <else/>
                                 <div>
                                     <p>您现在可选的培训方式有: </p>
-                                    <button class="btn btn-default" style="float: none">外包培训</button>
-                                    <button class="btn btn-default" style="float: none">内调培训</button>
+                                    <form method="post" action=<?php echo $actUrl2 ?> style="display:inline">
+                                        <input type="hidden" name="name" value={$userinfo['name']}>
+                                        <input type="hidden" name="level" value={$userinfo['level']}>
+                                        <input type="hidden" name="email" value={$userinfo['email']}>
+                                        <if condition="$flag eq true">
+                                                <p class="alert alert-warning">您的申请正在等待审核,请不要重复申请。</p>
+                                                <button disabled="disabled" type="submit" class="btn btn-default" style="float: none"  >外包培训</button>
+                                            <else/>
+                                        <button type="submit" class="btn btn-default" style="float: none">外包培训</button>
+                                    </form>
+                                    <form method="post" action=<?php echo $actUrl2 ?> style="display:inline">
+                                        <button type="submit" class="btn btn-default" style="float: none">内调培训</button>
+                                    </form>
+                                    </if>
                                 </div>
                             </if>
 

@@ -1335,3 +1335,13 @@ INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000582s ]
 
+[ 2018-03-27T20:10:31+08:00 ] 127.0.0.1 /tp3/Home/sign/SignUp.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000425s ]
+
+[ 2018-03-27T20:10:31+08:00 ] 127.0.0.1 /tp3/Home/Home/index/email/2%402.com.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000390s ]
+

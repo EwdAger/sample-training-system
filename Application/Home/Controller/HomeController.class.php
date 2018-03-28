@@ -12,12 +12,11 @@ class HomeController extends Controller{
 
         // 判断是否已申请过升级
         $flag = false;
-        if ($msg)
+        if ($msg and $msg[0]['is_confirm'] != 0)
             $flag = true;
-            $is_confirm = $msg[0]['is_confirm'];
 
         // 数据绑定, 提交至模板函数, 并显示页面
-        $this->assign(array('userinfo'=>$userinfo[0], 'flag'=>$flag, 'is_confirm'=>$is_confirm));
+        $this->assign(array('userinfo'=>$userinfo[0], 'flag'=>$flag));
         $this->display();
     }
 }
