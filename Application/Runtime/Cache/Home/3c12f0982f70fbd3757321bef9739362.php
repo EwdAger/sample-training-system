@@ -14,7 +14,7 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <?php
- $index="\"".U('index/index',"")."\""; $actUrl="\"".U('Train/outpack_check',"")."\""; ?>
+ $index="\"".U('index/index',"")."\""; $actUrl="\"".U('Train/inpack_check',"")."\""; ?>
 </head>
 <body>
 <div class="htmleaf-container">
@@ -30,13 +30,14 @@
                         <div class="form-group">
                             <div class="text-left">
                                 <div class="alert alert-info">
-                                    <p><b><?php echo ($data['name']); ?></b> 先生/女士你好! 您正在参加升职技能考试。<br/> 您目前的等级为<b><?php echo ($data['level']); ?></b>级
+                                    <p><b><?php echo ($data['name']); ?></b> 先生/女士你好! 您正在参加<b><?php echo ($data['_class']); ?></b>升职技能考试。<br/> 您目前的等级为<b><?php echo ($data['level']); ?></b>级
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="email" value=<?php echo ($data['email']); ?>>
+
                             <!-- 题目开始 -->
                             <div style="color: #000">
                                 <p class="text-left">1. 1+1等于?</p>

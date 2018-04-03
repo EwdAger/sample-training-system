@@ -17,12 +17,13 @@ class SignController extends Controller{
         $userinfo=$User->where($condition)->select(); //使用数组作为查询条件
 
         if(0==count($userinfo[0]))
-            echo "登陆失败，不存在此邮箱";
+            $this->error("登陆失败，不存在此邮箱");
         else{
             if($pwd!=$userinfo[0]['pwd'])
-                echo "登陆失败，密码错误！".$userinfo[0]['pwd'];
+                $this->error("登陆失败，密码错误！");
             else
             {
+                session('email',$email);
                 $this->redirect('Home/index', array("email"=>$email));
             }
         }

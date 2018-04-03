@@ -14,12 +14,12 @@
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->
 	<?php
- $actUrl="\"".U('sign/SignUp',"")."\""; ?>
+ $index="\"".U('index/index',"")."\""; $actUrl="\"".U('sign/SignUp',"")."\""; ?>
 </head>
 <body>
 	<div class="htmleaf-container"  >
 		<header class="htmleaf-header">
-			<h1>综合人事培养系统<span>Comprehensive Personnel Training System</span></h1>
+			<h1><a href=<?php echo $index?>> 综合人事培养系统</a><span>Comprehensive Personnel Training System</span></h1>
 		</header>
 		<div class="demo form-bg" style="padding: 20px 0;">
 		        <div class="container">
