@@ -13,11 +13,11 @@ class HomeController extends Controller{
             }
 
             $Message = M('Message');
-            $msg = $Message->where(array('name'=>$userinfo['name']))->find();
+            $msg = $Message->where(array('name'=>$userinfo['name'], 'is_confirm'=>0))->find();
 
             // 判断是否已申请过升级
             $flag = false;
-            if (!$msg or $msg['is_confirm'] != 0)
+            if (!$msg)
                 $flag = true;
 
             // 数据绑定, 提交至模板函数, 并显示页面

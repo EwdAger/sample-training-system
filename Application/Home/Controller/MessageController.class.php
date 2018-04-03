@@ -47,9 +47,14 @@ class MessageController extends Controller{
 
         $Message = M('message');
         $msg = $Message->where(array('name'=>$name, 'is_confirm'=>0))->find();
+
+        $User = M('User');
+        $userinfo = $User->where(array('name'=>$name))->find();
         if ($check){
             $msg['is_confirm'] = 1;
             $Message->save($msg);
+            $userinfo['level'] = $userinfo['level'] + 1;
+            $User->save($userinfo);
             $this->success('员工'.$name.'升职成功');
         }
         else{
