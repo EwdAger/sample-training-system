@@ -5,6 +5,7 @@ use Think\Controller;
 
 class TrainController extends Controller{
     public function outpack(){
+        // 实例化外包培训界面
         $data['name'] = I('post.name');
         $data['level'] = I('post.level');
         $data['email'] = I('post.email');
@@ -19,6 +20,8 @@ class TrainController extends Controller{
         // 获取全部post值
         $data = I('post.');
         $email = I('post.email','','email');
+
+        // 判断答案正误, 当前默认所有题目全对考试才算合格
         $flag = true;
         foreach ($data as $value)
             if ($value!='a'and $value != $email)
@@ -34,6 +37,7 @@ class TrainController extends Controller{
     }
 
     public function inpack(){
+        // 实例化内调培训科目选择界面
         $data['name'] = I('post.name');
         $data['level'] = I('post.level');
         $data['email'] = I('post.email');
@@ -43,6 +47,7 @@ class TrainController extends Controller{
     }
 
     public function inpack_class_select(){
+        // 实例化对应科目内调培训界面
         $data['name'] = I('post.name');
         $data['level'] = I('post.level');
         $data['email'] = I('post.email');

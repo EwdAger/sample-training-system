@@ -10,9 +10,9 @@ return array(
     'DB_PREFIX'=>'think_',// 数据库表前缀
     'DB_CHARSET'=>'utf8',// 数据库字符集
 
-    'URL_MODEL'=>'2',
+    'URL_MODEL'=>'2',// URL模式
 
-    'SHOW_PAGE_TRACE'=>true,
+    'SHOW_PAGE_TRACE'=>true, // 开启调试模式
 
     // 配置静态文件目录
     'TMPL_PARSE_STRING'  =>array(

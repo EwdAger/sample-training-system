@@ -13,6 +13,8 @@
     <!--[if IE]>
     <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
+
+    <!-- 使用ThinkPHP自带的U方法补全绝对路径-->
     <?php
         $signup="\"".U('sign/index',"")."\"";
 		$index="\"".U('index/index',"")."\"";
@@ -20,6 +22,8 @@
 		$demotion="\"".U('message/demotion',"")."\"";
 		$actUrl="\"".U('sign/SignIn',"")."\""; //ThinkPHP内置的U方法，用于URL的动态生成
 	?>
+
+    <!-- 降职信息确认弹窗 -->
     <script language="javascript">
         function sumbit_sure(){
             var gnl=confirm("确定要使该员工降职?");
@@ -58,12 +62,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <!-- ThinkPHP模板引擎内建标签 -->
                                 <foreach name="msg" item="vo">
                                     <tr>
                                         <td>{$vo.name}</td>
                                         <td>{$vo.now_level}</td>
                                         <td>{$vo.message_level}</td>
                                         <td>
+                                            <!-- 使管理员自己无法决定自己的升职降职情况 -->
                                             <if condition="$vo.name neq $name">
                                                 <form method="POST" action=<?php echo $confirm?> style="display:inline">
                                                     <input type="hidden" name="name" value={$vo.name}>
