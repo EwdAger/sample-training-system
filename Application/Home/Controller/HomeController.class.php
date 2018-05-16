@@ -23,8 +23,16 @@ class HomeController extends Controller{
             if (!$msg)
                 $flag = true;
 
+            // 判断当天是否打卡
+            $Sign = M('Sign');
+            $getSign = $Sign->where(array('name'=>$userinfo['name']))->select();
+            $signFlag = true;
+            foreach ($getSign as $time){
+                if(substr($time['time'], 0, 10) == date("Y-m-d"))
+                    $signFlag = false;
+            }
             // 数据绑定, 提交至模板引擎, 并显示页面
-            $this->assign(array('userinfo'=>$userinfo, 'flag'=>$flag, 'is_admin'=>$is_admin));
+            $this->assign(array('userinfo'=>$userinfo, 'flag'=>$flag, 'is_admin'=>$is_admin, 'signFlag'=>$signFlag));
             $this->display();
         }
     }
@@ -40,7 +48,11 @@ class HomeController extends Controller{
         $User = M('User');
         $userinfo = $User->select();
 
-        $this->assign(array('msg'=>$msg,'userinfo'=>$userinfo, 'name'=>$name));
+        // 获取所有打卡信息
+        $Sign = M('Sign');
+        $getSign = $Sign->select();
+
+        $this->assign(array('msg'=>$msg,'userinfo'=>$userinfo, 'name'=>$name, 'getSign'=>$getSign));
         $this->display();
     }
 }

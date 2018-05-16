@@ -37,6 +37,10 @@ class SignController extends Controller{
         $name=I('post.name');
         $pwd=I('post.pwd');
         $level=I('post.level');
+        $is_admin=I('is_admin');
+        $sex = I('post.sex');
+        $old = I('post.old');
+        $position = I('post.position');
 
         // 确保邮箱、姓名和密码均不为空
         if($email&$name&$pwd){
@@ -45,6 +49,10 @@ class SignController extends Controller{
             $data['name'] = $name;
             $data['pwd'] = $pwd;
             $data['level'] = $level;
+            $data['sex']=$sex;
+            $data['old']=$old;
+            $data['position']=$position;
+            $data['is_admin']=$is_admin;
             $User->add($data);   //ThinkPHP的数据写入操作使用add方法
             $this->success('新增成功，即将返回登录页面', U('index/index'));
         }
