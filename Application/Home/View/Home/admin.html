@@ -56,9 +56,13 @@
                                 <thead>
                                 <tr>
                                     <th>姓名</th>
+                                    <th>邮箱</th>
                                     <th>当前等级</th>
+                                    <th>下一等级</th>
                                     <th>升职方式</th>
+                                    <th>职业</th>
                                     <th>是否通过</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,35 +70,49 @@
                                 <foreach name="msg" item="vo">
                                     <tr>
                                         <td>{$vo.name}</td>
+                                        <td>{$vo.email}</td>
                                         <td>{$vo.now_level}</td>
+                                        <td>{$vo.next_level}</td>
                                         <td>{$vo.message_level}</td>
+                                        <td>{$vo._class}</td>
                                         <td>
-                                            <!-- 使管理员自己无法决定自己的升职降职情况 -->
-                                            <if condition="$vo.name neq $name">
-                                                <form method="POST" action=<?php echo $confirm?> style="display:inline">
-                                                    <input type="hidden" name="name" value={$vo.name}>
-                                                    <input type="hidden" name="check" value="1">
-                                                    <button class="btn btn-sm" style="float: none; padding: 0 10px">通过</button>
-                                                </form>
+                                            <if condition="$vo.is_confirm eq 1">
+                                                <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px">已通过</button>
+                                                <else/>
+                                                <!-- 使管理员自己无法决定自己的升职降职情况 -->
+                                                <if condition="$vo.name neq $name">
+                                                    <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                        <input type="hidden" name="name" value={$vo.name}>
+                                                        <input type="hidden" name="check" value="1">
+                                                        <button class="btn btn-sm" style="float: none; padding: 0 10px">通过</button>
+                                                    </form>
 
-                                                <form method="POST" action=<?php echo $confirm?> style="display:inline">
-                                                    <input type="hidden" name="name" value={$vo.name}>
-                                                    <input type="hidden" name="check" value="0">
-                                                    <button class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">驳回</button>
-                                                </form>
-                                            <else/>
-                                                <form method="POST" action=<?php echo $confirm?> style="display:inline">
-                                                    <input type="hidden" name="name" value={$vo.name}>
-                                                    <input type="hidden" name="check" value="1">
-                                                    <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px">通过</button>
-                                                </form>
+                                                    <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                        <input type="hidden" name="name" value={$vo.name}>
+                                                        <input type="hidden" name="check" value="0">
+                                                        <button class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">驳回</button>
+                                                    </form>
+                                                <else/>
+                                                    <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                        <input type="hidden" name="name" value={$vo.name}>
+                                                        <input type="hidden" name="check" value="1">
+                                                        <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px">通过</button>
+                                                    </form>
 
-                                                <form method="POST" action=<?php echo $confirm?> style="display:inline">
-                                                    <input type="hidden" name="name" value={$vo.name}>
-                                                    <input type="hidden" name="check" value="0">
-                                                    <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">驳回</button>
-                                                </form>
+                                                    <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                        <input type="hidden" name="name" value={$vo.name}>
+                                                        <input type="hidden" name="check" value="0">
+                                                        <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">驳回</button>
+                                                    </form>
+                                                </if>
                                             </if>
+                                        </td>
+                                        <td>
+                                            <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                <input type="hidden" name="name" value={$vo.name}>
+                                                <input type="hidden" name="check" value="0">
+                                                <button  class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">删除</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </foreach>

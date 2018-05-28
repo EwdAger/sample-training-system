@@ -15,7 +15,7 @@
     <![endif]-->
     <?php
         $index="\"".U('index/index',"")."\"";
-		$actUrl="\"".U('Train/outpack_check',"")."\""; //ThinkPHP内置的U方法，用于URL的动态生成
+		$actUrl="\"".U('Train/outpack_class_select',"")."\""; //ThinkPHP内置的U方法，用于URL的动态生成
 	?>
 </head>
 <body>
@@ -32,97 +32,29 @@
                         <div class="form-group">
                             <div class="text-left">
                                 <div class="alert alert-info">
-                                    <p><b>{$data['name']}</b> 先生/女士你好! 您正在参加升职技能考试。<br/> 您目前的等级为<b>{$data['level']}</b>级
+                                    <p><b>{$data['name']}</b> 先生/女士你好! 请选择您想要培训的班级。<br/> 您目前的等级为<b>{$data['level']}</b>级
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="email" value={$data['email']}>
-                            <!-- 题目开始 -->
-                            <div style="color: #000">
-                                <p class="text-left">1. 1+1等于?</p>
-                                <div class="text-left">
-                                    <label>
-                                        <input type="radio" name="1" value="a">A.2
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="1" value="b">B.3
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="1" value="c">C.4
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="1" value="d">D.5
-                                    </label>
-                                    <hr/>
-                                </div>
-
-                                <p class="text-left">2. 1+1等于?</p>
-                                <div class="text-left">
-                                    <label>
-                                        <input type="radio" name="2" value="a">A.2
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="2" value="b">B.3
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="2" value="c">C.4
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="2" value="d">D.5
-                                    </label>
-                                    <hr/>
-                                </div>
-
-                                <p class="text-left">3. 1+1等于?</p>
-                                <div class="text-left">
-                                    <label>
-                                        <input type="radio" name="3" value="a">A.2
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="3" value="b">B.3
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="3" value="c">C.4
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="3" value="d">D.5
-                                    </label>
-                                    <hr/>
-                                </div>
-
-                                <p class="text-left">4. 1+1等于?</p>
-                                <div class="text-left">
-                                    <label>
-                                        <input type="radio" name="4" value="a">A.2
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="4" value="b">B.3
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="4" value="c">C.4
-                                    </label>
-                                    <br>
-                                    <label>
-                                        <input type="radio" name="4" value="d">D.5
-                                    </label>
-                                    <hr/>
-                                </div>
+                            <input type="hidden" name="name" value={$data['name']}>
+                            <input type="hidden" name="level" value={$data['level']}>
+                            <div class="text-left" style="color: #000">
+                                <label>
+                                    <input type="radio" name="_class" value="管理">管理
+                                </label>
+                                <br>
+                                <label>
+                                    <input type="radio" name="_class" value="技术">技术
+                                </label>
+                                <br>
+                                <label>
+                                    <input type="radio" name="_class" value="销售">销售
+                                </label>
+                                <button type="submit" class="btn btn-default">提交</button>
                             </div>
-                            <button type="submit" class="btn btn-default">提交</button>
-                        </div>
                     </form>
                 </div>
             </div>

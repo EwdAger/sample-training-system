@@ -15,6 +15,8 @@ class MessageController extends Controller{
 
         $Message = M('message');
         $data['name'] = $name;
+        $data['email'] = $email;
+        $data['_class'] = '高层';
         $data['message_level'] = $check;
         $data['now_level'] = $level;
         $data['next_level'] = $level + 1;
@@ -30,6 +32,8 @@ class MessageController extends Controller{
 
         $Message = M('message');
         $msg['name'] = $userinfo['name'];
+        $msg['email']=$userinfo['email'];
+        $msg['_class']=$data['_class'];
         $msg['message_level'] = $data['check'];
         $msg['now_level'] = $userinfo['level'];
         $msg['next_level'] = $userinfo['level'] + 1;
@@ -60,8 +64,8 @@ class MessageController extends Controller{
         }
         else{
             // 删除员工升职申请信息
-            $Message->where(array('name'=>$name, 'is_confirm'=>0))->delete();
-            $this->success('员工'.$name.'升职申请已驳回');
+            $Message->where(array('name'=>$name))->delete();
+            $this->success('员工'.$name.'升职申请已删除');
         }
     }
 

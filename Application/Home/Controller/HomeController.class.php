@@ -42,7 +42,7 @@ class HomeController extends Controller{
 
         // 获取所有未通过审核的升职申请信息
         $Message = M('Message');
-        $msg = $Message->where(array('is_confirm'=>0))->select();
+        $msg = $Message->select();
 
         // 获取所有职员信息
         $User = M('User');
