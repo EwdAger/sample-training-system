@@ -22,6 +22,7 @@
 		$actUrl2="\"".U('train/outpack',"")."\"";
 		$actUrl3="\"".U('train/inpack',"")."\"";
 		$actUrl4="\"".U('duty/sign',"")."\"";
+		$reject_reason="\"".U('message/reject_reason',"")."\"";
 	?>
 </head>
 <body>
@@ -57,6 +58,13 @@
                                 <hr>
                             </if>
 
+                        </div>
+                        <div class="form-group">
+                            <if condition="$is_reject eq 1">
+                                <form class="form-horizontal" method="POST" action=<?php echo $reject_reason?>>
+                                    <button class="btn btn" style="float: none; background: #d9534f"  name="fid" value={$fid}>查看上次驳回理由</button>
+                                </form>
+                            </if>
                         </div>
 
                         <div class="form-group">

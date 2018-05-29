@@ -18,9 +18,11 @@
     <?php
         $signup="\"".U('sign/index',"")."\"";
 		$index="\"".U('index/index',"")."\"";
+		$reject_show="\"".U('message/reject_show',"")."\"";
 		$confirm="\"".U('message/confirm',"")."\"";
 		$demotion="\"".U('message/demotion',"")."\"";
 		$actUrl="\"".U('sign/SignIn',"")."\""; //ThinkPHP内置的U方法，用于URL的动态生成
+		$reject_reason="\"".U('message/reject_reason',"")."\"";
 	?>
 
     <!-- 降职信息确认弹窗 -->
@@ -78,7 +80,11 @@
                                         <td>
                                             <if condition="$vo.is_confirm eq 1">
                                                 <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px">已通过</button>
-                                                <else/>
+                                            <elseif condition="$vo.is_confirm eq -1"/>
+                                                <form method="POST" action=<?php echo $reject_reason?> style="display:inline">
+                                                    <button  class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f" name="fid" value={$vo.id}>已驳回</button>
+                                                </form>
+                                            <else/>
                                                 <!-- 使管理员自己无法决定自己的升职降职情况 -->
                                                 <if condition="$vo.name neq $name">
                                                     <form method="POST" action=<?php echo $confirm?> style="display:inline">
@@ -87,9 +93,8 @@
                                                         <button class="btn btn-sm" style="float: none; padding: 0 10px">通过</button>
                                                     </form>
 
-                                                    <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                    <form method="POST" action=<?php echo $reject_show?> style="display:inline">
                                                         <input type="hidden" name="name" value={$vo.name}>
-                                                        <input type="hidden" name="check" value="0">
                                                         <button class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">驳回</button>
                                                     </form>
                                                 <else/>
@@ -99,9 +104,8 @@
                                                         <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px">通过</button>
                                                     </form>
 
-                                                    <form method="POST" action=<?php echo $confirm?> style="display:inline">
+                                                    <form method="POST" action=<?php echo $reject_show?> style="display:inline">
                                                         <input type="hidden" name="name" value={$vo.name}>
-                                                        <input type="hidden" name="check" value="0">
                                                         <button disabled="disabled" class="btn btn-sm" style="float: none; padding: 0 10px; background: #d9534f">驳回</button>
                                                     </form>
                                                 </if>

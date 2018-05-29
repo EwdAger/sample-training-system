@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/htmleaf-demo.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/index.css">
+
+    <!--[if IE]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <?php
+		$index="\"".U('index/index',"")."\"";
+	?>
+</head>
+<body>
+<div class="htmleaf-container"  >
+    <header class="htmleaf-header">
+        <h1><a href=<?php echo $index?>> 综合人事培养系统</a><span>Comprehensive Personnel Training System</span></h1>
+    </header>
+    <div class="demo form-bg" style="padding: 20px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="form-horizontal">
+                        <span class="heading">升职申请驳回理由</span>
+                        <div class="form-group">
+                            <p><b>{$reject['name']} 先生/女士</b> 您的升职驳回理由如下</p>
+                        </div>
+                        <p style="color: #000000" class="form-group">
+                            {$reject['reason']}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

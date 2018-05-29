@@ -31,8 +31,18 @@ class HomeController extends Controller{
                 if(substr($time['time'], 0, 10) == date("Y-m-d"))
                     $signFlag = false;
             }
+
+            // 判断驳回理由
+            $is_reject = 0;
+            $fid = -1;
+            $rjc_msg = $Message->where(array('name'=>$userinfo['name'], 'now_level'=>$userinfo['level'], 'is_confirm'=>-1))->find();
+            if($rjc_msg){
+                $is_reject = 1;
+                $fid = $rjc_msg['id'];
+            }
+
             // 数据绑定, 提交至模板引擎, 并显示页面
-            $this->assign(array('userinfo'=>$userinfo, 'flag'=>$flag, 'is_admin'=>$is_admin, 'signFlag'=>$signFlag));
+            $this->assign(array('userinfo'=>$userinfo, 'flag'=>$flag, 'is_admin'=>$is_admin, 'signFlag'=>$signFlag, 'is_reject'=>$is_reject, 'fid'=>$fid));
             $this->display();
         }
     }

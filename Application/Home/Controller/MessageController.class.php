@@ -69,6 +69,46 @@ class MessageController extends Controller{
         }
     }
 
+    public function reject_show(){
+        $name = I("post.name");
+
+        $this->assign(array("name"=>$name));
+        $this->display();
+    }
+
+    public function reject(){
+        // 驳回
+        $name = I("post.name");
+        $reason = I("post.reason");
+        $Message = M('message');
+        $msg = $Message->where(array('name'=>$name, 'is_confirm'=>0))->find();
+        $msg['is_confirm'] = -1;
+        $Message->save($msg);
+
+        $Reject = M('reject');
+        $is_reject = $Reject->where(array('name'=>$name, 'email'=>$msg['email'], 'fid'=>$msg['id']))->find();
+        if($is_reject){
+            $this->error('该次申请已驳回，无法继续操作');
+        }
+        else{
+            $Reject->add(array("name"=>$name, "email"=>$msg['email'], "fid"=>$msg['id'], "reason"=>$reason));
+            $this->success("驳回理由填写成功", U("home/admin"));
+        }
+    }
+
+    public function reject_reason(){
+        $fid = I("post.fid");
+        $Reject = M("reject");
+        $rjc = $Reject->where(array("fid"=>$fid))->find();
+        if($rjc){
+            $this->assign(array("reject"=>$rjc));
+            $this->display();
+        }
+        else{
+            $this->error("没有查询到驳回理由");
+        }
+    }
+
     // 降职
     public function demotion(){
         $name = I("post.name");
